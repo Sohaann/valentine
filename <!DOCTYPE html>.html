@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? ❤️</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background: url('https://www.wallpaperflare.com/static/463/37/101/roses-hearts-love-romantic-wallpaper.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #ff4081;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            font-weight: bold;
+        }
+
+        .message {
+            font-size: 2em;
+            font-weight: bold;
+            color: #d63384;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 1.8em;
+            padding: 12px 25px;
+            margin: 15px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .yes {
+            background-color: #ff4081;
+            color: white;
+        }
+
+        .no {
+            background-color: #ccc;
+            color: black;
+        }
+
+        @keyframes bounceGlow {
+            0%, 100% { transform: translateY(0); text-shadow: 0px 0px 5px white; }
+            50% { transform: translateY(-10px); text-shadow: 0px 0px 15px pink; }
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .floating {
+            position: absolute;
+            font-size: 3em;
+            animation: bounceGlow 1.5s infinite;
+        }
+
+        .blossom {
+            position: absolute;
+            top: -50px;
+            width: 30px;
+            height: 30px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Cherry_blossom_icon.svg/1024px-Cherry_blossom_icon.svg.png');
+            background-size: cover;
+            animation: fall linear infinite;
+        }
+
+        .message-box {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            width: 70%;
+            margin: 0 auto;
+            font-size: 2em;
+            color: #ff4081;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        .bouncing-emoji {
+            font-size: 2.5em;
+            display: inline-block;
+            animation: bounce 1.5s infinite alternate;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Will You Be My Valentine? ❤️</h1>
+        <div class="message">
+            Ananya, you light up my world like no one else. Your smile, your kindness, and your presence make my heart race. <br> Will you be my forever Valentine? 💖
+        </div>
+        <br><br>
+        <div class="buttons">
+            <button class="yes" onclick="yesAnswer()">YES! 💕</button>
+            <button class="no" onclick="noAnswer()">No... 😢</button>
+        </div>
+    </div>
+
+    <script>
+        function yesAnswer() {
+            document.body.innerHTML = `
+                <div style="text-align: center; padding: 50px; background: url('https://i.pinimg.com/originals/f3/6c/bb/f36cbbce7dd8293a8b507b8c1e2168cd.jpg') no-repeat center center fixed; background-size: cover; height: 100vh;">
+                    <h1 style="color: white; font-size: 3.5em; text-shadow: 2px 2px 10px black;">YES! I'm so happy! 💖🥰</h1>
+                    <p style="color: white; font-size: 2.2em; font-weight: bold; background: rgba(255, 0, 100, 0.8); padding: 15px; border-radius: 15px; display: inline-block;">
+                        You are my happiness, my love, my everything! 💞💕💖
+                        I LOVE YOU SO MUCH MY BEEEE🐻
+                    </p>
+                    <br><br>
+                    <h2 style="color: white; font-size: 3em; font-weight: bold;">I LOVE YOU SO MUCH BEEE</h2>
+                    <div id="emoji-container"></div>
+                </div>
+            `;
+            createDecorations();
+        }
+
+        function noAnswer() {
+            alert("Are you sure? 😢 Think again... wouldn't we be cute together? 💕");
+        }
+
+        function createDecorations() {
+            // Create bouncing hearts all over the page
+            for (let i = 0; i < 50; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "💖";
+                heart.classList.add("floating");
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.top = Math.random() * window.innerHeight + "px";
+                heart.style.animationDuration = (Math.random() * 2 + 1) + "s";
+                document.body.appendChild(heart);
+            }
+
+            // Create cherry blossoms falling across the page
+            for (let i = 0; i < 30; i++) {
+                let blossom = document.createElement("div");
+                blossom.classList.add("blossom");
+                blossom.style.left = Math.random() * window.innerWidth + "px";
+                blossom.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(blossom);
+            }
+
+            // Create a bouncing emoji section under the final message
+            let emojiContainer = document.getElementById("emoji-container");
+            let emojis = ["💖", "💓", "💕", "💞", "💗", "💘"];
+            emojis.forEach((emoji) => {
+                let emojiElement = document.createElement("span");
+                emojiElement.classList.add("bouncing-emoji");
+                emojiElement.innerHTML = emoji;
+                emojiContainer.appendChild(emojiElement);
+            });
+
+            // Create a cute box at the bottom with the final message
+            let messageBox = document.createElement("div");
+            messageBox.classList.add("message-box");
+            messageBox.innerHTML = `<p>I LOVE YOU SO MUCH BEEE</p>`;
+            document.body.appendChild(messageBox);
+        }
+    </script>
+</body>
+</html>
